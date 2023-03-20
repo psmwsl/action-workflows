@@ -8,6 +8,18 @@ inputs:
   action:
     description: PSMWSL action to perform
     required: true
+  param1:
+    description: Parameter 1
+    required: false
+  param2:
+    description: Parameter 2
+    required: false
+  param3:
+    description: Parameter 3
+    required: false
+  param4:
+    description: Parameter 4
+    required: false
 runs:
   using: "composite"
   steps:
@@ -15,6 +27,10 @@ runs:
       env:
         GH_TOKEN: ${{ inputs.token }}
         ACTION: ${{ inputs.action }}
+        param1: ${{ inputs.param1 }}
+        param2: ${{ inputs.param2 }}
+        param3: ${{ inputs.param3 }}
+        param4: ${{ inputs.param4 }}
       shell: bash
       run: |
         php ${{ github.action_path }}/src/class-workflows.php

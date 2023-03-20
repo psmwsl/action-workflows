@@ -42,6 +42,10 @@ class Workflows {
 			case 'manual':
 				require_once 'includes/manual.php';
 				break;
+
+			case 'issue-in-progress':
+				require_once 'includes/issue-in-progress.php';
+				break;
 		}
 	}
 }
