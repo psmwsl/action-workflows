@@ -26,6 +26,7 @@ class Workflows {
 	public static function set_headers( $curl ) {
 
 		$curl->setHeader( 'Authorization', 'Bearer ' . getenv( 'GH_TOKEN' ) );
+		$curl->setHeader( 'Content-Type', 'application/json' );
 		$curl->setHeader( 'X-GitHub-Api-Version', '2022-11-28' );
 	}
 
