@@ -24,21 +24,18 @@ $curl->post(
 	'https://api.github.com/graphql',
 	array(
 		'query' => 'query{
-			node(id: "PROJECT_ID") {
-				... on ProjectV2 {
-					fields(first: 20) {
-						nodes {
-							... on ProjectV2FieldCommon {
-								id
-								name
-							}
-						}
-					}
+			user(login: "psmwsl") {
+			  projectsV2(first: 20) {
+				nodes {
+				  id
+				  title
 				}
+			  }
 			}
-		}',
+		  }',
 	)
 );
 
 var_export( $curl->getHttpStatusCode() );
+echo PHP_EOL . '-----------' . PHP_EOL;
 var_export( $curl->response );
