@@ -33,7 +33,7 @@ runs:
         param4: ${{ inputs.param4 }}
       shell: bash
       run: |
-        php ${{ github.action_path }}/src/class-workflows.php
+        php ${{ github.action_path }}/src/index.php
 branding:
   icon: unlock
   color: gray-dark
