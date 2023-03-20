@@ -20,3 +20,5 @@ $curl->post(
 		}',
 	)
 );
+
+var_export( $curl->response );
