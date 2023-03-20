@@ -17,7 +17,7 @@ runs:
         ACTION: ${{ inputs.action }}
       shell: bash
       run: |
-        php ${{ github.action_path }}/vendor/class-workflows.php
+        php ${{ github.action_path }}/src/class-workflows.php
 branding:
   icon: unlock
   color: gray-dark

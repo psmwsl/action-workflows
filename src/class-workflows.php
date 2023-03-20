@@ -3,7 +3,7 @@ require_once '../vendor/autoload.php';
 
 use Curl\Curl;
 
-class WorkFlows {
+class Workflows {
 
 	/**
 	 * Intialize the class
@@ -46,4 +46,4 @@ class WorkFlows {
 	}
 }
 
-WorkFlows::init();
+Workflows::init();
