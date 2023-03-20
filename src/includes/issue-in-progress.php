@@ -24,7 +24,7 @@ $curl->post(
 	'https://api.github.com/graphql',
 	array(
 		'query' => 'query{
-			user(login: "psmwsl") {
+			organization(login: "psmwsl") {      
 			  projectsV2(first: 20) {
 				nodes {
 				  id
