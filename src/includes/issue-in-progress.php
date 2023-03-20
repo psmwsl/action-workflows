@@ -6,7 +6,7 @@ $curl->post(
 			updateProjectV2ItemFieldValue(
 				input: {
 					projectId: "PVT_kwDOB6B2784ANa0H"
-					itemId: "I_kwDOJJ6Te85hDxZN"
+					itemId: "PVTI_lADOB6B2784ANa0HzgFhigM"
 					fieldId: "PVTSSF_lADOB6B2784ANa0HzgIkEpo"
 					value: { 
 						singleSelectOptionId: "fae3adc8"
