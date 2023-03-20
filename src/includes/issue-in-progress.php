@@ -23,15 +23,11 @@
 $curl->post(
 	'https://api.github.com/graphql',
 	array(
-		'query' => '{
-			organization(login:"psmwsl") {
-			membersWithRole(first: 100) {
-			  edges {
-				node {
-				  name
-				  avatarUrl
-				}
-			  }
+		'query' => 'query {
+			repository(owner:"psmwsl" name:"supportcandy") {
+			issue(number:8) {
+			  id,
+			  title
 			}
 		  }
 		}',
