@@ -21,4 +21,10 @@ $curl->post(
 	)
 );
 
-var_export( $curl->response );
+var_export( $curl->getHttpStatusCode() );
+echo PHP_EOL . '--------' . PHP_EOL;
+if ( $curl->error ) {
+	var_export( $curl->errorMessage );
+} else {
+	var_export( $curl->response );
+}
