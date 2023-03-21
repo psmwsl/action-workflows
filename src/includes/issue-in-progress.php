@@ -2,7 +2,7 @@
 /**
  * Change issue item to "In Progress" whenever new branch is created for the issue
  * Environment variables available to use:
- * param1: branch name
+ * param1: head branch name
  *
  * @package psmwsl
  */

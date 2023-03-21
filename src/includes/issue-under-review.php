@@ -2,7 +2,7 @@
 /**
  * Change issue item to "In Review" whenever new pull request created or new commit added to pull request.
  * Environment variables available to use:
- * param1: issue url
+ * param1: head branch name
  *
  * @package psmwsl
  */
@@ -13,7 +13,7 @@ $curl = new Curl();
 PSMWSL_Functions::set_headers( $curl );
 
 // retrive issue number from branch name.
-if ( preg_match( '/^https:\/\/api\.github\.com\/repos\/psmwsl\/supportcandy\/issues\/(\d+)$/i', getenv( 'param1' ), $matches ) ) {
+if ( preg_match( '/^(\d+)-\S+$/i', getenv( 'param1' ), $matches ) ) {
 
 	$item_id = PSMWSL_Functions::get_project_item_id( $matches[1] );
 	$curl->post(
