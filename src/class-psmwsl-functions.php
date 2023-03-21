@@ -41,7 +41,7 @@ class PSMWSL_Functions {
 				  }',
 			),
 		);
-		$item_id = $curl->response->data->repository->issue->projectItems->nodes[1]->id;
+		$item_id = $curl->response->data->repository->issue->projectItems->nodes[0]->id;
 		echo 'Item ID: ' . $item_id; // phpcs:ignore
 		return $item_id;
 	}
