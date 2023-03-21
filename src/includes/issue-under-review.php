@@ -3,6 +3,7 @@
  * Change issue item to "In Review" whenever new pull request created or new commit added to pull request.
  * Environment variables available to use:
  * param1: head branch name
+ * param2: pull_request number
  *
  * @package psmwsl
  */
@@ -37,4 +38,54 @@ if ( preg_match( '/^(\d+)-\S+$/i', getenv( 'param1' ), $matches ) ) {
 			}',
 		)
 	);
+
+	// get the labels of the branch so that we can remove 'bug' if found.
+	$curl->post(
+		'https://api.github.com/graphql',
+		array(
+			'query' => 'query {
+				repository(owner:"psmwsl" name:"supportcandy") {
+				  pullRequest(number: ' . getenv( 'param2' ) . ') {
+					id
+					labels(first: 10) {
+					  nodes {
+						id
+						name
+					  }
+					}
+				  }
+				}
+			  }',
+		)
+	);
+
+	// pull request node id.
+	$pl_id = $curl->response->data->repository->pullRequest->id;
+
+	// check whether 'bug' available.
+	$lables = array_filter(
+		array_map(
+			fn( $label ) => $label['name'] == 'bug' ? $label : false,
+			$curl->response->data->repository->pullRequest->labels->nodes
+		)
+	);
+
+	// remove 'bug' label if available.
+	if ( $lables ) {
+		$curl->post(
+			'https://api.github.com/graphql',
+			array(
+				'query' => 'mutation {
+					removeLabelsFromLabelable(
+					  input: {
+						labelableId: "' . $pl_id . '",
+						labelIds: [ "' . $lables[0]['id'] . '" ]
+					  }
+					) {
+					  clientMutationId
+					}
+				  }',
+			)
+		);
+	}
 }
