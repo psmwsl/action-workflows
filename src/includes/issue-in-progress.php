@@ -16,7 +16,6 @@ PSMWSL_Functions::set_headers( $curl );
 if ( preg_match( '/^(\d+)-\S+$/i', getenv( 'param1' ), $matches ) ) {
 
 	$item_id = PSMWSL_Functions::get_project_item_id( $matches[1] );
-	echo 'Item id received';
 	$curl->post(
 		'https://api.github.com/graphql',
 		array(
