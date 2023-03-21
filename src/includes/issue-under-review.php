@@ -65,7 +65,7 @@ if ( preg_match( '/^(\d+)-\S+$/i', getenv( 'param1' ), $matches ) ) {
 	// check whether 'bug' available.
 	$lables = array_filter(
 		array_map(
-			fn( $label ) => $label['name'] == 'bug' ? $label : false,
+			fn( $label ) => $label->name == 'bug' ? array( 'id' => $label->id, 'name' => $label->name ) : false, // phpcs:ignore
 			$curl->response->data->repository->pullRequest->labels->nodes
 		)
 	);
