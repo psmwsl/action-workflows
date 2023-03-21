@@ -28,9 +28,9 @@ class PSMWSL_Functions {
 		$curl->post(
 			'https://api.github.com/graphql',
 			array(
-				'query'     => 'query ( $issue_number: Int! ) { 
+				'query' => 'query { 
 					repository(owner:"psmwsl" name:"supportcandy") {
-					  issue(number: $issue_number){
+					  issue(number: ' . $issue_number . '){
 						projectItems(first: 1){
 						  nodes{
 							id
@@ -39,9 +39,6 @@ class PSMWSL_Functions {
 					  }
 					}
 				  }',
-				'variables' => array(
-					'issue_number' => $issue_number,
-				),
 			),
 		);
 		var_export( $curl->response );
