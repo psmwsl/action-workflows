@@ -41,8 +41,9 @@ class PSMWSL_Functions {
 				  } variables { "issue_number": ' . $issue_number . ' }',
 			),
 		);
-		$item_id = $curl->response->data->repository->issue->projectItems->nodes[1]->id;
-		echo 'Item ID: ' . $item_id; // phpcs:ignore
-		return $item_id;
+		echo $curl->response;
+		// $item_id = $curl->response->data->repository->issue->projectItems->nodes[1]->id;
+		// echo 'Item ID: ' . $item_id; // phpcs:ignore
+		// return $item_id;
 	}
 }
